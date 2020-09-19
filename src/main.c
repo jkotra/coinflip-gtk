@@ -46,8 +46,6 @@ static void activate(GtkApplication *app, gpointer user_data)
     /* Main window (GtkApplicationwindow) */
     GtkWindow *window;
 
-    GdkPixbuf *about_logo;
-
     /* load builder from gresource */
     builder = gtk_builder_new_from_resource("/com/github/jkotra/coinflip/ui/coinflip.glade");
 
