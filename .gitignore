@@ -1,6 +1,8 @@
 build/**
 builddir/**
 *.log
+build-dir/**
+.flatpak-builder/**
 
 *~
 \#*#
