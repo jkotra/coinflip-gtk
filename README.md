@@ -15,4 +15,11 @@ cd build
 ninja
 ```
 
+# Flatpak
+
+```
+flatpak-builder --user --install build-dir com.github.jkotra.coinflip.json
+flatpak run com.github.jkotra.coinflip
+```
+
 executable `coinflip` is found at `bin/src/` directory.
