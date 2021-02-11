@@ -11,9 +11,9 @@ coinflip_deps = [
 gnome = import('gnome')
 
 coinflip_sources += gnome.compile_resources('coinflip-resources',
-  '../data/coinflip.gresource.xml',
-  c_name: 'coinflip',
-  source_dir: '../data'
+                                            '../data/coinflip.gresource.xml',
+                                    c_name: 'coinflip',
+                                source_dir: '../data'
 )
 
 incdir = include_directories('../include')

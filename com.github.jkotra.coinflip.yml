@@ -1,0 +1,20 @@
+app-id: com.github.jkotra.coinflip
+runtime : org.gnome.Platform
+runtime-version : '3.38'
+sdk : org.gnome.Sdk
+command: coinflip
+
+finish-args:
+  - --socket=x11
+  - --socket=wayland
+  - --device=dri
+
+modules:
+
+  - name: coinflip
+    buildsystem: meson
+
+    sources:
+      - type: git
+        path: .
+
