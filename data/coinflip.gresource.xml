@@ -2,6 +2,6 @@
 <gresources>
   <gresource prefix="/com/github/jkotra/coinflip/">
     <file>ui/coinflip.glade</file>
-    <file>images/cointoss.svg</file>
+    <file>images/com.github.jkotra.coinflip.svg</file>
   </gresource>
 </gresources>

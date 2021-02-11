@@ -13,7 +13,7 @@ void on_about_dialog_delete_event(GtkWidget *about, gpointer userdata)
 void on_about_btn_clicked(GtkButton *about_btn, GtkAboutDialog *about)
 {
 
-    GdkPixbuf *about_logo = gdk_pixbuf_new_from_resource_at_scale("/com/github/jkotra/coinflip/images/cointoss.svg", -1, 128, true, NULL);
+    GdkPixbuf *about_logo = gdk_pixbuf_new_from_resource_at_scale("/com/github/jkotra/coinflip/images/com.github.jkotra.coinflip.svg", -1, 128, true, NULL);
     gtk_about_dialog_set_logo(about, about_logo);
 
     gtk_widget_show(GTK_WIDGET(about));
@@ -46,13 +46,13 @@ static void activate(GtkApplication *app, gpointer user_data)
     /* Main window (GtkApplicationwindow) */
     GtkWindow *window;
 
-    gtk_window_set_icon_name(GTK_WINDOW(window), "com.github.jkotra.coinflip");
 
     /* load builder from gresource */
     builder = gtk_builder_new_from_resource("/com/github/jkotra/coinflip/ui/coinflip.glade");
 
     //get `window` object and add to it to application (`app`)
     window = GTK_WINDOW(gtk_builder_get_object(builder, "window"));
+    gtk_window_set_icon_name(GTK_WINDOW(window), "com.github.jkotra.coinflip");
     gtk_application_add_window(app, window);
 
     //connect signals
