@@ -46,7 +46,7 @@ static void activate(GtkApplication *app, gpointer user_data)
     /* Main window (GtkApplicationwindow) */
     GtkWindow *window;
 
-    gtk_window_set_icon_name(window, "com.github.jkotra.coinflip");
+    gtk_window_set_icon_name(GTK_WINDOW(window), "com.github.jkotra.coinflip");
 
     /* load builder from gresource */
     builder = gtk_builder_new_from_resource("/com/github/jkotra/coinflip/ui/coinflip.glade");
