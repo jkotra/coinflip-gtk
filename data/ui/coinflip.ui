@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkApplicationWindow" id="window">
+    <property name="can-focus">1</property>
+    <property name="default-width">360</property>
+    <property name="default-height">550</property>
+    <child>
+      <object class="GtkBox">
+        <property name="can-focus">0</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkLabel" id="coin_side">
+            <property name="vexpand">1</property>
+            <property name="name">coin_side</property>
+            <property name="can-focus">0</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="label" translatable="yes">Ready!</property>
+            <attributes>
+              <attribute name="scale" value="6.5"></attribute>
+            </attributes>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="generate_btn">
+            <property name="label" translatable="yes">Generate</property>
+            <property name="receives-default">1</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="margin-bottom">8</property>
+            <signal name="clicked" handler="on_generate_btn_clicked" object="coin_side" swapped="no"/>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <object class="GtkHeaderBar">
+        <property name="can-focus">0</property>
+        <child>
+          <object class="GtkButton">
+            <property name="receives-default">1</property>
+            <signal name="clicked" handler="on_about_btn_clicked" swapped="no"/>
+            <child>
+              <object class="GtkImage">
+                <property name="can-focus">0</property>
+                <property name="icon-name">dialog-information-symbolic</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

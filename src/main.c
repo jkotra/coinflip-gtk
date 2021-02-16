@@ -3,20 +3,25 @@
 #include <gtk/gtk.h>
 #include <stdbool.h>
 
-void on_about_dialog_delete_event(GtkWidget *about, gpointer userdata)
+void on_about_btn_clicked(GtkButton *about_btn, gpointer user_data)
 {
-    /* This hides `about` window on exit button press aka also called destroy or delete event.
-       Note!: `After` attribute must be checked for this signal in glade.Refer https://developer.gnome.org/gobject/stable/gobject-Signals.html#g-signal-connect-after */
-    gtk_widget_hide_on_delete(about);
-}
+    GtkWidget* about = gtk_about_dialog_new();
 
-void on_about_btn_clicked(GtkButton *about_btn, GtkAboutDialog *about)
-{
+    gtk_about_dialog_set_program_name(about, "coinflip");
+    gtk_about_dialog_set_version(about, "0.02");
+    gtk_about_dialog_set_website(about, "https://stdin.top/");
+    
+    GdkPixbuf *about_logo = gdk_texture_new_from_resource("/com/github/jkotra/coinflip/images/com.github.jkotra.coinflip.svg");
 
-    GdkPixbuf *about_logo = gdk_pixbuf_new_from_resource_at_scale("/com/github/jkotra/coinflip/images/com.github.jkotra.coinflip.svg", -1, 128, true, NULL);
-    gtk_about_dialog_set_logo(about, about_logo);
+    gtk_about_dialog_set_logo(about, GDK_PAINTABLE(about_logo));
+    g_object_unref(about_logo);
 
-    gtk_widget_show(GTK_WIDGET(about));
+    gtk_about_dialog_set_license_type(about, GTK_LICENSE_GPL_3_0);
+
+    const char *authors[] = {"Jagadeesh Kotra", NULL};
+    gtk_about_dialog_set_authors(about, authors);
+
+    gtk_window_present(about);
 }
 
 void on_generate_btn_clicked(GtkButton *generate_btn, GtkLabel *coin_side)
@@ -48,7 +53,7 @@ static void activate(GtkApplication *app, gpointer user_data)
 
 
     /* load builder from gresource */
-    builder = gtk_builder_new_from_resource("/com/github/jkotra/coinflip/ui/coinflip.glade");
+    builder = gtk_builder_new_from_resource("/com/github/jkotra/coinflip/ui/coinflip.ui");
 
     //get `window` object and add to it to application (`app`)
     window = GTK_WINDOW(gtk_builder_get_object(builder, "window"));
@@ -56,7 +61,7 @@ static void activate(GtkApplication *app, gpointer user_data)
     gtk_application_add_window(app, window);
 
     //connect signals
-    gtk_builder_connect_signals(builder, NULL);
+    //gtk_builder_connect_signals(builder, NULL);
 
     // show window on screen.
     gtk_window_present(window);
