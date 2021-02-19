@@ -11,7 +11,7 @@ void on_about_btn_clicked(GtkButton *about_btn, gpointer user_data)
     gtk_about_dialog_set_version(about, "0.02");
     gtk_about_dialog_set_website(about, "https://stdin.top/");
     
-    GdkPixbuf *about_logo = gdk_texture_new_from_resource("/com/github/jkotra/coinflip/images/com.github.jkotra.coinflip.svg");
+    GdkTexture *about_logo = gdk_texture_new_from_resource("/com/github/jkotra/coinflip/images/com.github.jkotra.coinflip.svg");
 
     gtk_about_dialog_set_logo(about, GDK_PAINTABLE(about_logo));
     g_object_unref(about_logo);
